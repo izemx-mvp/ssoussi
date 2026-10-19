@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AtelierRouteImport } from './routes/atelier'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as JournalRouteImport } from './routes/journal'
+import { Route as MetiersRouteImport } from './routes/metiers'
+import { Route as ProfessionnelsRouteImport } from './routes/professionnels'
+import { Route as SavoirFaireRouteImport } from './routes/savoir-faire'
+import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
+import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AtelierRoute = AtelierRouteImport.update({
+  id: '/atelier',
+  path: '/atelier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JournalRoute = JournalRouteImport.update({
+  id: '/journal',
+  path: '/journal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MetiersRoute = MetiersRouteImport.update({
+  id: '/metiers',
+  path: '/metiers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfessionnelsRoute = ProfessionnelsRouteImport.update({
+  id: '/professionnels',
+  path: '/professionnels',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavoirFaireRoute = SavoirFaireRouteImport.update({
+  id: '/savoir-faire',
+  path: '/savoir-faire',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
+  id: '/collections/',
+  path: '/collections/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
+  id: '/collections/$slug',
+  path: '/collections/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/atelier': typeof AtelierRoute
+  '/contact': typeof ContactRoute
+  '/journal': typeof JournalRoute
+  '/metiers': typeof MetiersRoute
+  '/professionnels': typeof ProfessionnelsRoute
+  '/savoir-faire': typeof SavoirFaireRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
+  '/collections/': typeof CollectionsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/atelier': typeof AtelierRoute
+  '/contact': typeof ContactRoute
+  '/journal': typeof JournalRoute
+  '/metiers': typeof MetiersRoute
+  '/professionnels': typeof ProfessionnelsRoute
+  '/savoir-faire': typeof SavoirFaireRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
+  '/collections': typeof CollectionsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/atelier': typeof AtelierRoute
+  '/contact': typeof ContactRoute
+  '/journal': typeof JournalRoute
+  '/metiers': typeof MetiersRoute
+  '/professionnels': typeof ProfessionnelsRoute
+  '/savoir-faire': typeof SavoirFaireRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
+  '/collections/': typeof CollectionsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/atelier'
+    | '/contact'
+    | '/journal'
+    | '/metiers'
+    | '/professionnels'
+    | '/savoir-faire'
+    | '/collections/$slug'
+    | '/collections/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/atelier'
+    | '/contact'
+    | '/journal'
+    | '/metiers'
+    | '/professionnels'
+    | '/savoir-faire'
+    | '/collections/$slug'
+    | '/collections'
+  id:
+    | '__root__'
+    | '/'
+    | '/atelier'
+    | '/contact'
+    | '/journal'
+    | '/metiers'
+    | '/professionnels'
+    | '/savoir-faire'
+    | '/collections/$slug'
+    | '/collections/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AtelierRoute: typeof AtelierRoute
+  ContactRoute: typeof ContactRoute
+  JournalRoute: typeof JournalRoute
+  MetiersRoute: typeof MetiersRoute
+  ProfessionnelsRoute: typeof ProfessionnelsRoute
+  SavoirFaireRoute: typeof SavoirFaireRoute
+  CollectionsSlugRoute: typeof CollectionsSlugRoute
+  CollectionsIndexRoute: typeof CollectionsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/atelier': {
+      id: '/atelier'
+      path: '/atelier'
+      fullPath: '/atelier'
+      preLoaderRoute: typeof AtelierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/journal': {
+      id: '/journal'
+      path: '/journal'
+      fullPath: '/journal'
+      preLoaderRoute: typeof JournalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/metiers': {
+      id: '/metiers'
+      path: '/metiers'
+      fullPath: '/metiers'
+      preLoaderRoute: typeof MetiersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/professionnels': {
+      id: '/professionnels'
+      path: '/professionnels'
+      fullPath: '/professionnels'
+      preLoaderRoute: typeof ProfessionnelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/savoir-faire': {
+      id: '/savoir-faire'
+      path: '/savoir-faire'
+      fullPath: '/savoir-faire'
+      preLoaderRoute: typeof SavoirFaireRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/': {
+      id: '/collections/'
+      path: '/collections'
+      fullPath: '/collections/'
+      preLoaderRoute: typeof CollectionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/$slug': {
+      id: '/collections/$slug'
+      path: '/collections/$slug'
+      fullPath: '/collections/$slug'
+      preLoaderRoute: typeof CollectionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AtelierRoute: AtelierRoute,
+  ContactRoute: ContactRoute,
+  JournalRoute: JournalRoute,
+  MetiersRoute: MetiersRoute,
+  ProfessionnelsRoute: ProfessionnelsRoute,
+  SavoirFaireRoute: SavoirFaireRoute,
+  CollectionsSlugRoute: CollectionsSlugRoute,
+  CollectionsIndexRoute: CollectionsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

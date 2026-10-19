@@ -35,7 +35,7 @@ function F({ name, label, errors, children }: { name: string; label: string; err
   );
 }
 
-export function ContactForm({ defaultType = "particulier", productRef, onDone }: { defaultType?: string; productRef?: string; onDone?: () => void }) {
+export function ContactForm({ defaultType = "particulier", productRef, onDone }: { defaultType?: string; productRef?: string | undefined; onDone?: () => void }) {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -43,7 +43,7 @@ export function ContactForm({ defaultType = "particulier", productRef, onDone }:
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const raw = Object.fromEntries(fd.entries());
-    const parsed = schema.safeParse({ ...raw, product_ref: productRef || (raw.product_ref as string) || undefined });
+    const parsed = schema.safeParse({ ...raw, product_ref: productRef || (raw['product_ref'] as string) || undefined });
     if (!parsed.success) {
       const errs: Record<string, string> = {};
       parsed.error.issues.forEach((i) => (errs[i.path[0] as string] = i.message));

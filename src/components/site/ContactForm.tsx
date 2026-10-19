@@ -25,6 +25,16 @@ const types = [
   { v: "autre", l: "Autre" },
 ];
 
+function F({ name, label, errors, children }: { name: string; label: string; errors: Record<string, string>; children: React.ReactNode }) {
+  return (
+    <div className="space-y-1.5">
+      <Label htmlFor={name} className="text-xs uppercase tracking-widest text-muted-foreground">{label}</Label>
+      {children}
+      {errors[name] && <p className="text-xs text-destructive">{errors[name]}</p>}
+    </div>
+  );
+}
+
 export function ContactForm({ defaultType = "particulier", productRef, onDone }: { defaultType?: string; productRef?: string; onDone?: () => void }) {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -57,29 +67,21 @@ export function ContactForm({ defaultType = "particulier", productRef, onDone }:
     onDone?.();
   }
 
-  const F = ({ name, label, children }: { name: string; label: string; children: React.ReactNode }) => (
-    <div className="space-y-1.5">
-      <Label htmlFor={name} className="text-xs uppercase tracking-widest text-muted-foreground">{label}</Label>
-      {children}
-      {errors[name] && <p className="text-xs text-destructive">{errors[name]}</p>}
-    </div>
-  );
-
   return (
     <form onSubmit={onSubmit} className="grid gap-4 sm:grid-cols-2" noValidate>
-      <F name="name" label="Nom"><Input id="name" name="name" className="bg-background" /></F>
-      <F name="email" label="Email"><Input id="email" name="email" type="email" className="bg-background" /></F>
-      <F name="phone" label="Téléphone"><Input id="phone" name="phone" className="bg-background" /></F>
-      <F name="country" label="Pays"><Input id="country" name="country" className="bg-background" /></F>
+      <F errors={errors} name="name" label="Nom"><Input id="name" name="name" className="bg-background" /></F>
+      <F errors={errors} name="email" label="Email"><Input id="email" name="email" type="email" className="bg-background" /></F>
+      <F errors={errors} name="phone" label="Téléphone"><Input id="phone" name="phone" className="bg-background" /></F>
+      <F errors={errors} name="country" label="Pays"><Input id="country" name="country" className="bg-background" /></F>
       <div className="sm:col-span-2">
-        <F name="type" label="Vous êtes">
+        <F errors={errors} name="type" label="Vous êtes">
           <select id="type" name="type" defaultValue={defaultType} className="h-9 w-full rounded-md border border-input bg-background px-3 text-sm">
             {types.map((t) => <option key={t.v} value={t.v}>{t.l}</option>)}
           </select>
         </F>
       </div>
       <div className="sm:col-span-2">
-        <F name="message" label="Votre projet">
+        <F errors={errors} name="message" label="Votre projet">
           <Textarea id="message" name="message" rows={5} className="bg-background" placeholder="Quantités, dimensions, usage, échéance…" />
         </F>
       </div>

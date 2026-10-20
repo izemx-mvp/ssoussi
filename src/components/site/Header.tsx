@@ -22,7 +22,7 @@ export function Header() {
   useEffect(() => setOpen(false), [loc.pathname]);
 
   return (
-    <header className={cn("fixed inset-x-0 top-0 z-50 transition-all duration-500", scrolled ? "border-b border-border/60 bg-sand/80 backdrop-blur-lg" : "bg-transparent")}>
+    <header className={cn("fixed inset-x-0 top-0 z-50 border-b border-border/60 transition-all duration-500", scrolled ? "bg-cream/95 backdrop-blur-lg" : "bg-cream")}>
       <div className="container-page flex h-20 items-center justify-between gap-6">
         <Link to="/" aria-label="AFUS, accueil" className="shrink-0">
           <Logo className="h-14" />
@@ -37,14 +37,14 @@ export function Header() {
         </nav>
         <div className="flex items-center gap-3">
           <Button variant="clay" size="default" className="hidden sm:inline-flex" onClick={() => openQuote()}>Demander un devis</Button>
-          <button className="text-safi xl:hidden" onClick={() => setOpen(true)} aria-label="Ouvrir le menu"><Menu className="size-7" /></button>
+          <Button variant="ghost" size="icon" className="text-safi xl:hidden" onClick={() => setOpen(true)} aria-label="Ouvrir le menu"><Menu className="size-7" /></Button>
         </div>
       </div>
 
       {open && (
         <div className="fixed inset-0 z-50 flex flex-col bg-safi px-6 py-6 text-cream xl:hidden">
           <div className="flex justify-end">
-            <button onClick={() => setOpen(false)} aria-label="Fermer le menu"><X className="size-8" /></button>
+            <Button variant="ghost" size="icon" onClick={() => setOpen(false)} aria-label="Fermer le menu"><X className="size-8" /></Button>
           </div>
           <nav className="mt-6 flex flex-col gap-4">
             {nav.map((n) => (

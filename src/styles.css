@@ -124,7 +124,7 @@
     font-family: var(--font-display);
     color: var(--safi-blue);
     font-weight: 500;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
     line-height: 1.05;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -145,7 +145,7 @@
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: 0.72rem;
-  letter-spacing: 0.28em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--clay);
   font-weight: 600;

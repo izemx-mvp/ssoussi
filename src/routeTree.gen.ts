@@ -18,6 +18,10 @@ import { Route as ProfessionnelsRouteImport } from './routes/professionnels'
 import { Route as SavoirFaireRouteImport } from './routes/savoir-faire'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
+import { Route as JournalIndexRouteImport } from './routes/journal.index'
+import { Route as JournalSlugRouteImport } from './routes/journal.$slug'
+import { Route as MetiersIndexRouteImport } from './routes/metiers.index'
+import { Route as MetiersSlugRouteImport } from './routes/metiers.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -64,40 +68,70 @@ const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
   path: '/collections/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const JournalIndexRoute = JournalIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => JournalRoute,
+} as any)
+const JournalSlugRoute = JournalSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => JournalRoute,
+} as any)
+const MetiersIndexRoute = MetiersIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MetiersRoute,
+} as any)
+const MetiersSlugRoute = MetiersSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => MetiersRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/atelier': typeof AtelierRoute
   '/contact': typeof ContactRoute
-  '/journal': typeof JournalRoute
-  '/metiers': typeof MetiersRoute
+  '/journal': typeof JournalRouteWithChildren
+  '/metiers': typeof MetiersRouteWithChildren
   '/professionnels': typeof ProfessionnelsRoute
   '/savoir-faire': typeof SavoirFaireRoute
   '/collections/$slug': typeof CollectionsSlugRoute
+  '/journal/$slug': typeof JournalSlugRoute
+  '/metiers/$slug': typeof MetiersSlugRoute
   '/collections/': typeof CollectionsIndexRoute
+  '/journal/': typeof JournalIndexRoute
+  '/metiers/': typeof MetiersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/atelier': typeof AtelierRoute
   '/contact': typeof ContactRoute
-  '/journal': typeof JournalRoute
-  '/metiers': typeof MetiersRoute
   '/professionnels': typeof ProfessionnelsRoute
   '/savoir-faire': typeof SavoirFaireRoute
   '/collections/$slug': typeof CollectionsSlugRoute
+  '/journal/$slug': typeof JournalSlugRoute
+  '/metiers/$slug': typeof MetiersSlugRoute
   '/collections': typeof CollectionsIndexRoute
+  '/journal': typeof JournalIndexRoute
+  '/metiers': typeof MetiersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/atelier': typeof AtelierRoute
   '/contact': typeof ContactRoute
-  '/journal': typeof JournalRoute
-  '/metiers': typeof MetiersRoute
+  '/journal': typeof JournalRouteWithChildren
+  '/metiers': typeof MetiersRouteWithChildren
   '/professionnels': typeof ProfessionnelsRoute
   '/savoir-faire': typeof SavoirFaireRoute
   '/collections/$slug': typeof CollectionsSlugRoute
+  '/journal/$slug': typeof JournalSlugRoute
+  '/metiers/$slug': typeof MetiersSlugRoute
   '/collections/': typeof CollectionsIndexRoute
+  '/journal/': typeof JournalIndexRoute
+  '/metiers/': typeof MetiersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -110,18 +144,24 @@ export interface FileRouteTypes {
     | '/professionnels'
     | '/savoir-faire'
     | '/collections/$slug'
+    | '/journal/$slug'
+    | '/metiers/$slug'
     | '/collections/'
+    | '/journal/'
+    | '/metiers/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/atelier'
     | '/contact'
-    | '/journal'
-    | '/metiers'
     | '/professionnels'
     | '/savoir-faire'
     | '/collections/$slug'
+    | '/journal/$slug'
+    | '/metiers/$slug'
     | '/collections'
+    | '/journal'
+    | '/metiers'
   id:
     | '__root__'
     | '/'
@@ -132,15 +172,19 @@ export interface FileRouteTypes {
     | '/professionnels'
     | '/savoir-faire'
     | '/collections/$slug'
+    | '/journal/$slug'
+    | '/metiers/$slug'
     | '/collections/'
+    | '/journal/'
+    | '/metiers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AtelierRoute: typeof AtelierRoute
   ContactRoute: typeof ContactRoute
-  JournalRoute: typeof JournalRoute
-  MetiersRoute: typeof MetiersRoute
+  JournalRoute: typeof JournalRouteWithChildren
+  MetiersRoute: typeof MetiersRouteWithChildren
   ProfessionnelsRoute: typeof ProfessionnelsRoute
   SavoirFaireRoute: typeof SavoirFaireRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
@@ -212,15 +256,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CollectionsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/journal/': {
+      id: '/journal/'
+      path: '/'
+      fullPath: '/journal/'
+      preLoaderRoute: typeof JournalIndexRouteImport
+      parentRoute: typeof JournalRoute
+    }
+    '/journal/$slug': {
+      id: '/journal/$slug'
+      path: '/$slug'
+      fullPath: '/journal/$slug'
+      preLoaderRoute: typeof JournalSlugRouteImport
+      parentRoute: typeof JournalRoute
+    }
+    '/metiers/': {
+      id: '/metiers/'
+      path: '/'
+      fullPath: '/metiers/'
+      preLoaderRoute: typeof MetiersIndexRouteImport
+      parentRoute: typeof MetiersRoute
+    }
+    '/metiers/$slug': {
+      id: '/metiers/$slug'
+      path: '/$slug'
+      fullPath: '/metiers/$slug'
+      preLoaderRoute: typeof MetiersSlugRouteImport
+      parentRoute: typeof MetiersRoute
+    }
   }
 }
+
+interface JournalRouteChildren {
+  JournalSlugRoute: typeof JournalSlugRoute
+  JournalIndexRoute: typeof JournalIndexRoute
+}
+
+const JournalRouteChildren: JournalRouteChildren = {
+  JournalSlugRoute: JournalSlugRoute,
+  JournalIndexRoute: JournalIndexRoute,
+}
+
+const JournalRouteWithChildren =
+  JournalRoute._addFileChildren(JournalRouteChildren)
+
+interface MetiersRouteChildren {
+  MetiersSlugRoute: typeof MetiersSlugRoute
+  MetiersIndexRoute: typeof MetiersIndexRoute
+}
+
+const MetiersRouteChildren: MetiersRouteChildren = {
+  MetiersSlugRoute: MetiersSlugRoute,
+  MetiersIndexRoute: MetiersIndexRoute,
+}
+
+const MetiersRouteWithChildren =
+  MetiersRoute._addFileChildren(MetiersRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AtelierRoute: AtelierRoute,
   ContactRoute: ContactRoute,
-  JournalRoute: JournalRoute,
-  MetiersRoute: MetiersRoute,
+  JournalRoute: JournalRouteWithChildren,
+  MetiersRoute: MetiersRouteWithChildren,
   ProfessionnelsRoute: ProfessionnelsRoute,
   SavoirFaireRoute: SavoirFaireRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,

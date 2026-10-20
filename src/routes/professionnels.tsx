@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
+import { ContactForm } from "@/components/site/ContactForm";
+import { Button } from "@/components/ui/button";
+import { useQuote } from "@/components/site/QuoteDialog";
+import riad from "@/assets/riad.jpg";
+import { pageMeta } from "@/lib/seo";
+export const Route=createFileRoute("/professionnels")({head:()=>pageMeta("Professionnels", "Pièces artisanales, collections et projets sur mesure pour hôtels, restaurants, architectes et décorateurs."),component:Professionnels});
+function Professionnels(){const {open}=useQuote();return <><PageHero eyebrow="Hôtellerie · Architecture · Décoration" title="Votre projet, notre matière." intro="Des collections choisies aux pièces sur mesure, imaginons ensemble un projet qui porte l’empreinte de l’artisanat marocain."><Button variant="clay" size="xl" className="mt-8" onClick={()=>open()}>Demander un devis</Button></PageHero><div className="container-page"><img src={riad} alt="Intérieur de riad et pièces de céramique" className="aspect-[16/7] min-h-72 w-full rounded-lg object-cover"/></div><section className="container-page grid gap-10 py-20 md:grid-cols-3">{[{t:"Hôtels & restaurants",d:"Art de la table, vases et objets décoratifs pour donner une identité à vos espaces."},{t:"Architectes & décorateurs",d:"Matières, formats et finitions à étudier en fonction de votre lieu et de vos intentions."},{t:"Boutiques & distribution",d:"Une sélection de pièces et de métiers pour composer une collection cohérente."}].map(x=><div key={x.t} className="border-t border-border pt-6"><h2 className="text-3xl">{x.t}</h2><p className="mt-4 text-sm leading-relaxed text-muted-foreground">{x.d}</p></div>)}</section><section className="bg-cream py-20"><div className="container-page grid gap-12 md:grid-cols-2"><div><p className="eyebrow">Écrivons la suite ensemble</p><h2 className="mt-4 text-5xl">Parlez-nous de votre projet.</h2><p className="mt-6 max-w-md leading-relaxed text-muted-foreground">Votre lieu, vos quantités, les matières souhaitées et votre échéance : chaque détail nous aide à comprendre votre besoin.</p></div><ContactForm defaultType="professionnel"/></div></section></>;}
 
-export const Route = createFileRoute("/professionnels")({
-  head: () => ({ meta: [{ title: "Professionnels — AFUS" }, { name: "description", content: "Professionnels — AFUS, artisanat marocain." }, { property: "og:title", content: "Professionnels — AFUS" }, { property: "og:description", content: "Professionnels — AFUS, artisanat marocain." }] }),
-  component: () => <PageHero eyebrow="AFUS" title="Professionnels" intro="Page en cours de rédaction." />,
-});

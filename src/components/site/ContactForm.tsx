@@ -53,11 +53,11 @@ export function ContactForm({ defaultType = "particulier", productRef, onDone }:
     setErrors({});
     setLoading(true);
     const d = parsed.data;
+    try {
     const { error } = await supabase.from("contacts").insert({
       name: d.name, email: d.email, phone: d.phone || null, country: d.country || null,
       type: d.type, message: d.message, product_ref: d.product_ref || null,
     });
-    setLoading(false);
     if (error) {
       toast.error("L'envoi a échoué. Merci de réessayer.");
       return;
@@ -65,6 +65,11 @@ export function ContactForm({ defaultType = "particulier", productRef, onDone }:
     toast.success("Merci ! Votre message a bien été envoyé.");
     (e.target as HTMLFormElement).reset();
     onDone?.();
+    } catch {
+      toast.error("L’envoi a échoué. Merci de réessayer.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (

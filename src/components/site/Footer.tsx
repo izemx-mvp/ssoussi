@@ -10,7 +10,6 @@ export function Footer() {
         <div>
           <div className="inline-block rounded-3xl bg-cream p-4"><Logo className="h-24" /></div>
           <p className="mt-6 max-w-sm text-sm leading-relaxed">{site.mission}</p>
-          <p className="mt-4 font-display text-2xl text-cream">{site.tifinagh}</p>
         </div>
         <div>
           <h3 className="eyebrow text-ochre">Navigation</h3>
@@ -34,7 +33,7 @@ export function Footer() {
       </div>
       <div className="border-t border-cream/15">
         <div className="container-page flex flex-col gap-2 py-6 text-xs sm:flex-row sm:justify-between">
-          <p>© {new Date().getFullYear()} AFUS — Artisanat marocain</p>
+          <p>© {new Date().getFullYear()} SSOUSSI — Artisanat marocain</p>
           <div className="flex gap-5">
             <Link to="/contact" className="hover:text-cream">Mentions légales</Link>
             <Link to="/contact" className="hover:text-cream">Confidentialité</Link>

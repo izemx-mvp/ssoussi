@@ -58,11 +58,11 @@ export function FloatingActions() {
   return (
     <>
       <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3">
-        <a href={whatsappLink("Bonjour AFUS, je souhaite des informations.")} target="_blank" rel="noreferrer" aria-label="WhatsApp"
+        <a href={whatsappLink("Bonjour SSOUSSI, je souhaite des informations.")} target="_blank" rel="noreferrer" aria-label="WhatsApp"
           className="grid size-14 place-items-center rounded-full bg-safi text-cream shadow-soft transition-transform hover:-translate-y-1">
           <WhatsAppIcon />
         </a>
-        <button onClick={() => setOpen((o) => !o)} aria-label="Assistant AFUS"
+        <button onClick={() => setOpen((o) => !o)} aria-label="Assistant SSOUSSI"
           className="grid size-14 place-items-center rounded-full bg-clay text-cream shadow-soft transition-transform hover:-translate-y-1">
           {open ? <X className="size-6" /> : <MessageCircle className="size-6" />}
         </button>
@@ -71,7 +71,7 @@ export function FloatingActions() {
       {open && (
         <div className="fixed bottom-24 right-5 z-40 flex h-[32rem] max-h-[75vh] w-[calc(100vw-2.5rem)] max-w-sm flex-col overflow-hidden rounded-3xl border border-border bg-cream shadow-soft">
           <div className="bg-safi px-5 py-4 text-cream">
-            <p className="font-display text-2xl leading-none">ⴰⴼⵓⵙ · Assistant</p>
+            <p className="font-display text-2xl leading-none">SSOUSSI · Assistant</p>
             <p className="mt-1 text-xs text-cream/70">Questions sur nos métiers, pièces et devis</p>
           </div>
           <div className="flex-1 space-y-3 overflow-y-auto p-4 text-sm">

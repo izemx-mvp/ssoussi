@@ -24,7 +24,7 @@ export function Header() {
   return (
     <header className={cn("fixed inset-x-0 top-0 z-50 border-b border-border/60 transition-all duration-500", scrolled ? "bg-cream/95 backdrop-blur-lg" : "bg-cream")}>
       <div className="container-page flex h-20 items-center justify-between gap-6">
-        <Link to="/" aria-label="AFUS, accueil" className="shrink-0">
+        <Link to="/" aria-label="SSOUSSI, accueil" className="shrink-0">
           <Logo className="h-14" />
         </Link>
         <nav className="hidden items-center gap-6 xl:flex" aria-label="Navigation principale">

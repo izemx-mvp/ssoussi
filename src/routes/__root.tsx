@@ -25,7 +25,7 @@ function NotFoundComponent() {
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Cette page est introuvable</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          Retrouvons le chemin des ateliers et des collections AFUS.
+          Retrouvons le chemin des ateliers et des collections SSOUSSI.
         </p>
         <div className="mt-6">
           <Link
@@ -83,9 +83,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AFUS — Artisanat marocain" },
+      { title: "SSOUSSI — Artisanat marocain" },
       { name: "description", content: "Les matières, les mains et les métiers de l’artisanat marocain." },
-      { property: "og:title", content: "AFUS — Artisanat marocain" },
+      { property: "og:title", content: "SSOUSSI — Artisanat marocain" },
       { property: "og:description", content: "Les matières, les mains et les métiers de l’artisanat marocain." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

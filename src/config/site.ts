@@ -1,12 +1,12 @@
 // CONTENU EXEMPLE À REMPLACER
 export const site = {
-  name: "AFUS",
+  name: "SSOUSSI",
   tifinagh: "ⴰⴼⵓⵙ",
   tagline: "Artisanat marocain",
   mission:
-    "AFUS réunit des maîtres artisans du Maroc pour faire voyager des pièces façonnées à la main, de Safi au reste du monde.",
+    "SSOUSSI réunit des maîtres artisans du Maroc pour faire voyager des pièces façonnées à la main, de Safi au reste du monde.",
   phone: "+212 5 24 00 00 00",
-  email: "contact@afus-artisanat.ma",
+  email: "contact@ssoussi-artisanat.ma",
   whatsapp: "212600000000", // format international sans +
   address: "Colline des Potiers, Safi 46000, Maroc",
   socials: {

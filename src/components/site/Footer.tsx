@@ -34,7 +34,7 @@ export function Footer() {
       </div>
       <div className="border-t border-cream/15">
         <div className="container-page flex flex-col gap-2 py-6 text-xs sm:flex-row sm:justify-between">
-          <p>© {new Date().getFullYear()} AFUS — Artisanat marocain</p>
+          <p>© {new Date().getFullYear()} SSOUSSI — Artisanat marocain</p>
           <div className="flex gap-5">
             <Link to="/contact" className="hover:text-cream">Mentions légales</Link>
             <Link to="/contact" className="hover:text-cream">Confidentialité</Link>

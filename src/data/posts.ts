@@ -24,7 +24,7 @@ export const posts: Post[] = [
     body: [
       "À l'aube, les fours de la colline fument déjà. Ici, la céramique n'est pas un décor : c'est un métier transmis de père en fils depuis le XIIe siècle.",
       "L'argile, extraite à quelques kilomètres, est trempée, foulée puis tournée. Chaque geste compte, chaque pièce porte la trace d'une main.",
-      "Chez AFUS, nous travaillons directement avec ces ateliers, pour que la valeur reste au plus près de ceux qui créent.",
+      "Chez SSOUSSI, nous travaillons directement avec ces ateliers, pour que la valeur reste au plus près de ceux qui créent.",
     ],
   },
   {

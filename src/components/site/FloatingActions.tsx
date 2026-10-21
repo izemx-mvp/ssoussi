@@ -58,11 +58,11 @@ export function FloatingActions() {
   return (
     <>
       <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3">
-        <a href={whatsappLink("Bonjour AFUS, je souhaite des informations.")} target="_blank" rel="noreferrer" aria-label="WhatsApp"
+        <a href={whatsappLink("Bonjour SSOUSSI, je souhaite des informations.")} target="_blank" rel="noreferrer" aria-label="WhatsApp"
           className="grid size-14 place-items-center rounded-full bg-safi text-cream shadow-soft transition-transform hover:-translate-y-1">
           <WhatsAppIcon />
         </a>
-        <button onClick={() => setOpen((o) => !o)} aria-label="Assistant AFUS"
+        <button onClick={() => setOpen((o) => !o)} aria-label="Assistant SSOUSSI"
           className="grid size-14 place-items-center rounded-full bg-clay text-cream shadow-soft transition-transform hover:-translate-y-1">
           {open ? <X className="size-6" /> : <MessageCircle className="size-6" />}
         </button>

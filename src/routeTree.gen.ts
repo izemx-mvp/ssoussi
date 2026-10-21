@@ -18,7 +18,6 @@ import { Route as Char123LocaleChar125ContactRouteImport } from './routes/{-$loc
 import { Route as Char123LocaleChar125MentionsLegalesRouteImport } from './routes/{-$locale}/mentions-legales'
 import { Route as Char123LocaleChar125ProfessionnelsRouteImport } from './routes/{-$locale}/professionnels'
 import { Route as Char123LocaleChar125SavoirFaireRouteImport } from './routes/{-$locale}/savoir-faire'
-import { Route as ApiPublicChatRouteImport } from './routes/api/public/chat'
 import { Route as Char123LocaleChar125CollectionsIndexRouteImport } from './routes/{-$locale}/collections/index'
 import { Route as Char123LocaleChar125JournalIndexRouteImport } from './routes/{-$locale}/journal/index'
 import { Route as Char123LocaleChar125JournalSlugRouteImport } from './routes/{-$locale}/journal/$slug'
@@ -80,11 +79,6 @@ const Char123LocaleChar125SavoirFaireRoute =
     path: '/savoir-faire',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
-const ApiPublicChatRoute = ApiPublicChatRouteImport.update({
-  id: '/api/public/chat',
-  path: '/api/public/chat',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const Char123LocaleChar125CollectionsIndexRoute =
   Char123LocaleChar125CollectionsIndexRouteImport.update({
     id: '/collections/',
@@ -138,7 +132,6 @@ export interface FileRoutesByFullPath {
   '/{-$locale}/professionnels': typeof Char123LocaleChar125ProfessionnelsRoute
   '/{-$locale}/savoir-faire': typeof Char123LocaleChar125SavoirFaireRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
-  '/api/public/chat': typeof ApiPublicChatRoute
   '/{-$locale}/journal/$slug': typeof Char123LocaleChar125JournalSlugRoute
   '/{-$locale}/metiers/$slug': typeof Char123LocaleChar125MetiersSlugRoute
   '/{-$locale}/collections/': typeof Char123LocaleChar125CollectionsIndexRoute
@@ -156,7 +149,6 @@ export interface FileRoutesByTo {
   '/{-$locale}/professionnels': typeof Char123LocaleChar125ProfessionnelsRoute
   '/{-$locale}/savoir-faire': typeof Char123LocaleChar125SavoirFaireRoute
   '/{-$locale}': typeof Char123LocaleChar125IndexRoute
-  '/api/public/chat': typeof ApiPublicChatRoute
   '/{-$locale}/journal/$slug': typeof Char123LocaleChar125JournalSlugRoute
   '/{-$locale}/metiers/$slug': typeof Char123LocaleChar125MetiersSlugRoute
   '/{-$locale}/collections': typeof Char123LocaleChar125CollectionsIndexRoute
@@ -176,7 +168,6 @@ export interface FileRoutesById {
   '/{-$locale}/professionnels': typeof Char123LocaleChar125ProfessionnelsRoute
   '/{-$locale}/savoir-faire': typeof Char123LocaleChar125SavoirFaireRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
-  '/api/public/chat': typeof ApiPublicChatRoute
   '/{-$locale}/journal/$slug': typeof Char123LocaleChar125JournalSlugRoute
   '/{-$locale}/metiers/$slug': typeof Char123LocaleChar125MetiersSlugRoute
   '/{-$locale}/collections/': typeof Char123LocaleChar125CollectionsIndexRoute
@@ -197,7 +188,6 @@ export interface FileRouteTypes {
     | '/{-$locale}/professionnels'
     | '/{-$locale}/savoir-faire'
     | '/{-$locale}/'
-    | '/api/public/chat'
     | '/{-$locale}/journal/$slug'
     | '/{-$locale}/metiers/$slug'
     | '/{-$locale}/collections/'
@@ -215,7 +205,6 @@ export interface FileRouteTypes {
     | '/{-$locale}/professionnels'
     | '/{-$locale}/savoir-faire'
     | '/{-$locale}'
-    | '/api/public/chat'
     | '/{-$locale}/journal/$slug'
     | '/{-$locale}/metiers/$slug'
     | '/{-$locale}/collections'
@@ -234,7 +223,6 @@ export interface FileRouteTypes {
     | '/{-$locale}/professionnels'
     | '/{-$locale}/savoir-faire'
     | '/{-$locale}/'
-    | '/api/public/chat'
     | '/{-$locale}/journal/$slug'
     | '/{-$locale}/metiers/$slug'
     | '/{-$locale}/collections/'
@@ -247,7 +235,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   Char123LocaleChar125RouteRoute: typeof Char123LocaleChar125RouteRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  ApiPublicChatRoute: typeof ApiPublicChatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -314,13 +301,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/{-$locale}/savoir-faire'
       preLoaderRoute: typeof Char123LocaleChar125SavoirFaireRouteImport
       parentRoute: typeof Char123LocaleChar125RouteRoute
-    }
-    '/api/public/chat': {
-      id: '/api/public/chat'
-      path: '/api/public/chat'
-      fullPath: '/api/public/chat'
-      preLoaderRoute: typeof ApiPublicChatRouteImport
-      parentRoute: typeof rootRouteImport
     }
     '/{-$locale}/collections/': {
       id: '/{-$locale}/collections/'
@@ -425,7 +405,6 @@ const Char123LocaleChar125RouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   Char123LocaleChar125RouteRoute: Char123LocaleChar125RouteRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  ApiPublicChatRoute: ApiPublicChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

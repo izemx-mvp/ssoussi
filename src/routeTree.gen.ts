@@ -9,320 +9,423 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AtelierRouteImport } from './routes/atelier'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as JournalRouteImport } from './routes/journal'
-import { Route as MetiersRouteImport } from './routes/metiers'
-import { Route as ProfessionnelsRouteImport } from './routes/professionnels'
-import { Route as SavoirFaireRouteImport } from './routes/savoir-faire'
-import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
-import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
-import { Route as JournalIndexRouteImport } from './routes/journal.index'
-import { Route as JournalSlugRouteImport } from './routes/journal.$slug'
-import { Route as MetiersIndexRouteImport } from './routes/metiers.index'
-import { Route as MetiersSlugRouteImport } from './routes/metiers.$slug'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as Char123LocaleChar125RouteRouteImport } from './routes/{-$locale}/route'
+import { Route as Char123LocaleChar125IndexRouteImport } from './routes/{-$locale}/index'
+import { Route as Char123LocaleChar125AtelierRouteImport } from './routes/{-$locale}/atelier'
+import { Route as Char123LocaleChar125ConfidentialiteRouteImport } from './routes/{-$locale}/confidentialite'
+import { Route as Char123LocaleChar125ContactRouteImport } from './routes/{-$locale}/contact'
+import { Route as Char123LocaleChar125MentionsLegalesRouteImport } from './routes/{-$locale}/mentions-legales'
+import { Route as Char123LocaleChar125ProfessionnelsRouteImport } from './routes/{-$locale}/professionnels'
+import { Route as Char123LocaleChar125SavoirFaireRouteImport } from './routes/{-$locale}/savoir-faire'
+import { Route as ApiPublicChatRouteImport } from './routes/api/public/chat'
+import { Route as Char123LocaleChar125CollectionsIndexRouteImport } from './routes/{-$locale}/collections/index'
+import { Route as Char123LocaleChar125JournalIndexRouteImport } from './routes/{-$locale}/journal/index'
+import { Route as Char123LocaleChar125JournalSlugRouteImport } from './routes/{-$locale}/journal/$slug'
+import { Route as Char123LocaleChar125MetiersIndexRouteImport } from './routes/{-$locale}/metiers/index'
+import { Route as Char123LocaleChar125MetiersSlugRouteImport } from './routes/{-$locale}/metiers/$slug'
+import { Route as Char123LocaleChar125CollectionsCategoryIndexRouteImport } from './routes/{-$locale}/collections/$category.index'
+import { Route as Char123LocaleChar125CollectionsCategorySlugRouteImport } from './routes/{-$locale}/collections/$category.$slug'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AtelierRoute = AtelierRouteImport.update({
-  id: '/atelier',
-  path: '/atelier',
+const Char123LocaleChar125RouteRoute =
+  Char123LocaleChar125RouteRouteImport.update({
+    id: '/{-$locale}',
+    path: '/{-$locale}',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char123LocaleChar125IndexRoute =
+  Char123LocaleChar125IndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125AtelierRoute =
+  Char123LocaleChar125AtelierRouteImport.update({
+    id: '/atelier',
+    path: '/atelier',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125ConfidentialiteRoute =
+  Char123LocaleChar125ConfidentialiteRouteImport.update({
+    id: '/confidentialite',
+    path: '/confidentialite',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125ContactRoute =
+  Char123LocaleChar125ContactRouteImport.update({
+    id: '/contact',
+    path: '/contact',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125MentionsLegalesRoute =
+  Char123LocaleChar125MentionsLegalesRouteImport.update({
+    id: '/mentions-legales',
+    path: '/mentions-legales',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125ProfessionnelsRoute =
+  Char123LocaleChar125ProfessionnelsRouteImport.update({
+    id: '/professionnels',
+    path: '/professionnels',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125SavoirFaireRoute =
+  Char123LocaleChar125SavoirFaireRouteImport.update({
+    id: '/savoir-faire',
+    path: '/savoir-faire',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const ApiPublicChatRoute = ApiPublicChatRouteImport.update({
+  id: '/api/public/chat',
+  path: '/api/public/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JournalRoute = JournalRouteImport.update({
-  id: '/journal',
-  path: '/journal',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MetiersRoute = MetiersRouteImport.update({
-  id: '/metiers',
-  path: '/metiers',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProfessionnelsRoute = ProfessionnelsRouteImport.update({
-  id: '/professionnels',
-  path: '/professionnels',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SavoirFaireRoute = SavoirFaireRouteImport.update({
-  id: '/savoir-faire',
-  path: '/savoir-faire',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
-  id: '/collections/',
-  path: '/collections/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
-  id: '/collections/$slug',
-  path: '/collections/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JournalIndexRoute = JournalIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => JournalRoute,
-} as any)
-const JournalSlugRoute = JournalSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => JournalRoute,
-} as any)
-const MetiersIndexRoute = MetiersIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => MetiersRoute,
-} as any)
-const MetiersSlugRoute = MetiersSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => MetiersRoute,
-} as any)
+const Char123LocaleChar125CollectionsIndexRoute =
+  Char123LocaleChar125CollectionsIndexRouteImport.update({
+    id: '/collections/',
+    path: '/collections/',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125JournalIndexRoute =
+  Char123LocaleChar125JournalIndexRouteImport.update({
+    id: '/journal/',
+    path: '/journal/',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125JournalSlugRoute =
+  Char123LocaleChar125JournalSlugRouteImport.update({
+    id: '/journal/$slug',
+    path: '/journal/$slug',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125MetiersIndexRoute =
+  Char123LocaleChar125MetiersIndexRouteImport.update({
+    id: '/metiers/',
+    path: '/metiers/',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125MetiersSlugRoute =
+  Char123LocaleChar125MetiersSlugRouteImport.update({
+    id: '/metiers/$slug',
+    path: '/metiers/$slug',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125CollectionsCategoryIndexRoute =
+  Char123LocaleChar125CollectionsCategoryIndexRouteImport.update({
+    id: '/collections/$category/',
+    path: '/collections/$category/',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125CollectionsCategorySlugRoute =
+  Char123LocaleChar125CollectionsCategorySlugRouteImport.update({
+    id: '/collections/$category/$slug',
+    path: '/collections/$category/$slug',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/atelier': typeof AtelierRoute
-  '/contact': typeof ContactRoute
-  '/journal': typeof JournalRouteWithChildren
-  '/metiers': typeof MetiersRouteWithChildren
-  '/professionnels': typeof ProfessionnelsRoute
-  '/savoir-faire': typeof SavoirFaireRoute
-  '/collections/$slug': typeof CollectionsSlugRoute
-  '/journal/$slug': typeof JournalSlugRoute
-  '/metiers/$slug': typeof MetiersSlugRoute
-  '/collections/': typeof CollectionsIndexRoute
-  '/journal/': typeof JournalIndexRoute
-  '/metiers/': typeof MetiersIndexRoute
+  '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/{-$locale}/atelier': typeof Char123LocaleChar125AtelierRoute
+  '/{-$locale}/confidentialite': typeof Char123LocaleChar125ConfidentialiteRoute
+  '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
+  '/{-$locale}/mentions-legales': typeof Char123LocaleChar125MentionsLegalesRoute
+  '/{-$locale}/professionnels': typeof Char123LocaleChar125ProfessionnelsRoute
+  '/{-$locale}/savoir-faire': typeof Char123LocaleChar125SavoirFaireRoute
+  '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
+  '/api/public/chat': typeof ApiPublicChatRoute
+  '/{-$locale}/journal/$slug': typeof Char123LocaleChar125JournalSlugRoute
+  '/{-$locale}/metiers/$slug': typeof Char123LocaleChar125MetiersSlugRoute
+  '/{-$locale}/collections/': typeof Char123LocaleChar125CollectionsIndexRoute
+  '/{-$locale}/journal/': typeof Char123LocaleChar125JournalIndexRoute
+  '/{-$locale}/metiers/': typeof Char123LocaleChar125MetiersIndexRoute
+  '/{-$locale}/collections/$category/$slug': typeof Char123LocaleChar125CollectionsCategorySlugRoute
+  '/{-$locale}/collections/$category/': typeof Char123LocaleChar125CollectionsCategoryIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/atelier': typeof AtelierRoute
-  '/contact': typeof ContactRoute
-  '/professionnels': typeof ProfessionnelsRoute
-  '/savoir-faire': typeof SavoirFaireRoute
-  '/collections/$slug': typeof CollectionsSlugRoute
-  '/journal/$slug': typeof JournalSlugRoute
-  '/metiers/$slug': typeof MetiersSlugRoute
-  '/collections': typeof CollectionsIndexRoute
-  '/journal': typeof JournalIndexRoute
-  '/metiers': typeof MetiersIndexRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/{-$locale}/atelier': typeof Char123LocaleChar125AtelierRoute
+  '/{-$locale}/confidentialite': typeof Char123LocaleChar125ConfidentialiteRoute
+  '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
+  '/{-$locale}/mentions-legales': typeof Char123LocaleChar125MentionsLegalesRoute
+  '/{-$locale}/professionnels': typeof Char123LocaleChar125ProfessionnelsRoute
+  '/{-$locale}/savoir-faire': typeof Char123LocaleChar125SavoirFaireRoute
+  '/{-$locale}': typeof Char123LocaleChar125IndexRoute
+  '/api/public/chat': typeof ApiPublicChatRoute
+  '/{-$locale}/journal/$slug': typeof Char123LocaleChar125JournalSlugRoute
+  '/{-$locale}/metiers/$slug': typeof Char123LocaleChar125MetiersSlugRoute
+  '/{-$locale}/collections': typeof Char123LocaleChar125CollectionsIndexRoute
+  '/{-$locale}/journal': typeof Char123LocaleChar125JournalIndexRoute
+  '/{-$locale}/metiers': typeof Char123LocaleChar125MetiersIndexRoute
+  '/{-$locale}/collections/$category/$slug': typeof Char123LocaleChar125CollectionsCategorySlugRoute
+  '/{-$locale}/collections/$category': typeof Char123LocaleChar125CollectionsCategoryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/atelier': typeof AtelierRoute
-  '/contact': typeof ContactRoute
-  '/journal': typeof JournalRouteWithChildren
-  '/metiers': typeof MetiersRouteWithChildren
-  '/professionnels': typeof ProfessionnelsRoute
-  '/savoir-faire': typeof SavoirFaireRoute
-  '/collections/$slug': typeof CollectionsSlugRoute
-  '/journal/$slug': typeof JournalSlugRoute
-  '/metiers/$slug': typeof MetiersSlugRoute
-  '/collections/': typeof CollectionsIndexRoute
-  '/journal/': typeof JournalIndexRoute
-  '/metiers/': typeof MetiersIndexRoute
+  '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/{-$locale}/atelier': typeof Char123LocaleChar125AtelierRoute
+  '/{-$locale}/confidentialite': typeof Char123LocaleChar125ConfidentialiteRoute
+  '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
+  '/{-$locale}/mentions-legales': typeof Char123LocaleChar125MentionsLegalesRoute
+  '/{-$locale}/professionnels': typeof Char123LocaleChar125ProfessionnelsRoute
+  '/{-$locale}/savoir-faire': typeof Char123LocaleChar125SavoirFaireRoute
+  '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
+  '/api/public/chat': typeof ApiPublicChatRoute
+  '/{-$locale}/journal/$slug': typeof Char123LocaleChar125JournalSlugRoute
+  '/{-$locale}/metiers/$slug': typeof Char123LocaleChar125MetiersSlugRoute
+  '/{-$locale}/collections/': typeof Char123LocaleChar125CollectionsIndexRoute
+  '/{-$locale}/journal/': typeof Char123LocaleChar125JournalIndexRoute
+  '/{-$locale}/metiers/': typeof Char123LocaleChar125MetiersIndexRoute
+  '/{-$locale}/collections/$category/$slug': typeof Char123LocaleChar125CollectionsCategorySlugRoute
+  '/{-$locale}/collections/$category/': typeof Char123LocaleChar125CollectionsCategoryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/atelier'
-    | '/contact'
-    | '/journal'
-    | '/metiers'
-    | '/professionnels'
-    | '/savoir-faire'
-    | '/collections/$slug'
-    | '/journal/$slug'
-    | '/metiers/$slug'
-    | '/collections/'
-    | '/journal/'
-    | '/metiers/'
+    | '/{-$locale}'
+    | '/sitemap.xml'
+    | '/{-$locale}/atelier'
+    | '/{-$locale}/confidentialite'
+    | '/{-$locale}/contact'
+    | '/{-$locale}/mentions-legales'
+    | '/{-$locale}/professionnels'
+    | '/{-$locale}/savoir-faire'
+    | '/{-$locale}/'
+    | '/api/public/chat'
+    | '/{-$locale}/journal/$slug'
+    | '/{-$locale}/metiers/$slug'
+    | '/{-$locale}/collections/'
+    | '/{-$locale}/journal/'
+    | '/{-$locale}/metiers/'
+    | '/{-$locale}/collections/$category/$slug'
+    | '/{-$locale}/collections/$category/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/atelier'
-    | '/contact'
-    | '/professionnels'
-    | '/savoir-faire'
-    | '/collections/$slug'
-    | '/journal/$slug'
-    | '/metiers/$slug'
-    | '/collections'
-    | '/journal'
-    | '/metiers'
+    | '/sitemap.xml'
+    | '/{-$locale}/atelier'
+    | '/{-$locale}/confidentialite'
+    | '/{-$locale}/contact'
+    | '/{-$locale}/mentions-legales'
+    | '/{-$locale}/professionnels'
+    | '/{-$locale}/savoir-faire'
+    | '/{-$locale}'
+    | '/api/public/chat'
+    | '/{-$locale}/journal/$slug'
+    | '/{-$locale}/metiers/$slug'
+    | '/{-$locale}/collections'
+    | '/{-$locale}/journal'
+    | '/{-$locale}/metiers'
+    | '/{-$locale}/collections/$category/$slug'
+    | '/{-$locale}/collections/$category'
   id:
     | '__root__'
-    | '/'
-    | '/atelier'
-    | '/contact'
-    | '/journal'
-    | '/metiers'
-    | '/professionnels'
-    | '/savoir-faire'
-    | '/collections/$slug'
-    | '/journal/$slug'
-    | '/metiers/$slug'
-    | '/collections/'
-    | '/journal/'
-    | '/metiers/'
+    | '/{-$locale}'
+    | '/sitemap.xml'
+    | '/{-$locale}/atelier'
+    | '/{-$locale}/confidentialite'
+    | '/{-$locale}/contact'
+    | '/{-$locale}/mentions-legales'
+    | '/{-$locale}/professionnels'
+    | '/{-$locale}/savoir-faire'
+    | '/{-$locale}/'
+    | '/api/public/chat'
+    | '/{-$locale}/journal/$slug'
+    | '/{-$locale}/metiers/$slug'
+    | '/{-$locale}/collections/'
+    | '/{-$locale}/journal/'
+    | '/{-$locale}/metiers/'
+    | '/{-$locale}/collections/$category/$slug'
+    | '/{-$locale}/collections/$category/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AtelierRoute: typeof AtelierRoute
-  ContactRoute: typeof ContactRoute
-  JournalRoute: typeof JournalRouteWithChildren
-  MetiersRoute: typeof MetiersRouteWithChildren
-  ProfessionnelsRoute: typeof ProfessionnelsRoute
-  SavoirFaireRoute: typeof SavoirFaireRoute
-  CollectionsSlugRoute: typeof CollectionsSlugRoute
-  CollectionsIndexRoute: typeof CollectionsIndexRoute
+  Char123LocaleChar125RouteRoute: typeof Char123LocaleChar125RouteRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiPublicChatRoute: typeof ApiPublicChatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/atelier': {
-      id: '/atelier'
+    '/{-$locale}': {
+      id: '/{-$locale}'
+      path: '/{-$locale}'
+      fullPath: '/{-$locale}'
+      preLoaderRoute: typeof Char123LocaleChar125RouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/{-$locale}/': {
+      id: '/{-$locale}/'
+      path: '/'
+      fullPath: '/{-$locale}/'
+      preLoaderRoute: typeof Char123LocaleChar125IndexRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/atelier': {
+      id: '/{-$locale}/atelier'
       path: '/atelier'
-      fullPath: '/atelier'
-      preLoaderRoute: typeof AtelierRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/atelier'
+      preLoaderRoute: typeof Char123LocaleChar125AtelierRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/contact': {
-      id: '/contact'
+    '/{-$locale}/confidentialite': {
+      id: '/{-$locale}/confidentialite'
+      path: '/confidentialite'
+      fullPath: '/{-$locale}/confidentialite'
+      preLoaderRoute: typeof Char123LocaleChar125ConfidentialiteRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/contact': {
+      id: '/{-$locale}/contact'
       path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/contact'
+      preLoaderRoute: typeof Char123LocaleChar125ContactRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/journal': {
-      id: '/journal'
-      path: '/journal'
-      fullPath: '/journal'
-      preLoaderRoute: typeof JournalRouteImport
-      parentRoute: typeof rootRouteImport
+    '/{-$locale}/mentions-legales': {
+      id: '/{-$locale}/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/{-$locale}/mentions-legales'
+      preLoaderRoute: typeof Char123LocaleChar125MentionsLegalesRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/metiers': {
-      id: '/metiers'
-      path: '/metiers'
-      fullPath: '/metiers'
-      preLoaderRoute: typeof MetiersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/professionnels': {
-      id: '/professionnels'
+    '/{-$locale}/professionnels': {
+      id: '/{-$locale}/professionnels'
       path: '/professionnels'
-      fullPath: '/professionnels'
-      preLoaderRoute: typeof ProfessionnelsRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/professionnels'
+      preLoaderRoute: typeof Char123LocaleChar125ProfessionnelsRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/savoir-faire': {
-      id: '/savoir-faire'
+    '/{-$locale}/savoir-faire': {
+      id: '/{-$locale}/savoir-faire'
       path: '/savoir-faire'
-      fullPath: '/savoir-faire'
-      preLoaderRoute: typeof SavoirFaireRouteImport
+      fullPath: '/{-$locale}/savoir-faire'
+      preLoaderRoute: typeof Char123LocaleChar125SavoirFaireRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/api/public/chat': {
+      id: '/api/public/chat'
+      path: '/api/public/chat'
+      fullPath: '/api/public/chat'
+      preLoaderRoute: typeof ApiPublicChatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/collections/': {
-      id: '/collections/'
+    '/{-$locale}/collections/': {
+      id: '/{-$locale}/collections/'
       path: '/collections'
-      fullPath: '/collections/'
-      preLoaderRoute: typeof CollectionsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/collections/'
+      preLoaderRoute: typeof Char123LocaleChar125CollectionsIndexRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/collections/$slug': {
-      id: '/collections/$slug'
-      path: '/collections/$slug'
-      fullPath: '/collections/$slug'
-      preLoaderRoute: typeof CollectionsSlugRouteImport
-      parentRoute: typeof rootRouteImport
+    '/{-$locale}/journal/': {
+      id: '/{-$locale}/journal/'
+      path: '/journal'
+      fullPath: '/{-$locale}/journal/'
+      preLoaderRoute: typeof Char123LocaleChar125JournalIndexRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/journal/': {
-      id: '/journal/'
-      path: '/'
-      fullPath: '/journal/'
-      preLoaderRoute: typeof JournalIndexRouteImport
-      parentRoute: typeof JournalRoute
+    '/{-$locale}/journal/$slug': {
+      id: '/{-$locale}/journal/$slug'
+      path: '/journal/$slug'
+      fullPath: '/{-$locale}/journal/$slug'
+      preLoaderRoute: typeof Char123LocaleChar125JournalSlugRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/journal/$slug': {
-      id: '/journal/$slug'
-      path: '/$slug'
-      fullPath: '/journal/$slug'
-      preLoaderRoute: typeof JournalSlugRouteImport
-      parentRoute: typeof JournalRoute
+    '/{-$locale}/metiers/': {
+      id: '/{-$locale}/metiers/'
+      path: '/metiers'
+      fullPath: '/{-$locale}/metiers/'
+      preLoaderRoute: typeof Char123LocaleChar125MetiersIndexRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/metiers/': {
-      id: '/metiers/'
-      path: '/'
-      fullPath: '/metiers/'
-      preLoaderRoute: typeof MetiersIndexRouteImport
-      parentRoute: typeof MetiersRoute
+    '/{-$locale}/metiers/$slug': {
+      id: '/{-$locale}/metiers/$slug'
+      path: '/metiers/$slug'
+      fullPath: '/{-$locale}/metiers/$slug'
+      preLoaderRoute: typeof Char123LocaleChar125MetiersSlugRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/metiers/$slug': {
-      id: '/metiers/$slug'
-      path: '/$slug'
-      fullPath: '/metiers/$slug'
-      preLoaderRoute: typeof MetiersSlugRouteImport
-      parentRoute: typeof MetiersRoute
+    '/{-$locale}/collections/$category/': {
+      id: '/{-$locale}/collections/$category/'
+      path: '/collections/$category'
+      fullPath: '/{-$locale}/collections/$category/'
+      preLoaderRoute: typeof Char123LocaleChar125CollectionsCategoryIndexRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/collections/$category/$slug': {
+      id: '/{-$locale}/collections/$category/$slug'
+      path: '/collections/$category/$slug'
+      fullPath: '/{-$locale}/collections/$category/$slug'
+      preLoaderRoute: typeof Char123LocaleChar125CollectionsCategorySlugRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
   }
 }
 
-interface JournalRouteChildren {
-  JournalSlugRoute: typeof JournalSlugRoute
-  JournalIndexRoute: typeof JournalIndexRoute
+interface Char123LocaleChar125RouteRouteChildren {
+  Char123LocaleChar125AtelierRoute: typeof Char123LocaleChar125AtelierRoute
+  Char123LocaleChar125ConfidentialiteRoute: typeof Char123LocaleChar125ConfidentialiteRoute
+  Char123LocaleChar125ContactRoute: typeof Char123LocaleChar125ContactRoute
+  Char123LocaleChar125MentionsLegalesRoute: typeof Char123LocaleChar125MentionsLegalesRoute
+  Char123LocaleChar125ProfessionnelsRoute: typeof Char123LocaleChar125ProfessionnelsRoute
+  Char123LocaleChar125SavoirFaireRoute: typeof Char123LocaleChar125SavoirFaireRoute
+  Char123LocaleChar125IndexRoute: typeof Char123LocaleChar125IndexRoute
+  Char123LocaleChar125JournalSlugRoute: typeof Char123LocaleChar125JournalSlugRoute
+  Char123LocaleChar125MetiersSlugRoute: typeof Char123LocaleChar125MetiersSlugRoute
+  Char123LocaleChar125CollectionsIndexRoute: typeof Char123LocaleChar125CollectionsIndexRoute
+  Char123LocaleChar125JournalIndexRoute: typeof Char123LocaleChar125JournalIndexRoute
+  Char123LocaleChar125MetiersIndexRoute: typeof Char123LocaleChar125MetiersIndexRoute
+  Char123LocaleChar125CollectionsCategorySlugRoute: typeof Char123LocaleChar125CollectionsCategorySlugRoute
+  Char123LocaleChar125CollectionsCategoryIndexRoute: typeof Char123LocaleChar125CollectionsCategoryIndexRoute
 }
 
-const JournalRouteChildren: JournalRouteChildren = {
-  JournalSlugRoute: JournalSlugRoute,
-  JournalIndexRoute: JournalIndexRoute,
-}
+const Char123LocaleChar125RouteRouteChildren: Char123LocaleChar125RouteRouteChildren =
+  {
+    Char123LocaleChar125AtelierRoute: Char123LocaleChar125AtelierRoute,
+    Char123LocaleChar125ConfidentialiteRoute:
+      Char123LocaleChar125ConfidentialiteRoute,
+    Char123LocaleChar125ContactRoute: Char123LocaleChar125ContactRoute,
+    Char123LocaleChar125MentionsLegalesRoute:
+      Char123LocaleChar125MentionsLegalesRoute,
+    Char123LocaleChar125ProfessionnelsRoute:
+      Char123LocaleChar125ProfessionnelsRoute,
+    Char123LocaleChar125SavoirFaireRoute: Char123LocaleChar125SavoirFaireRoute,
+    Char123LocaleChar125IndexRoute: Char123LocaleChar125IndexRoute,
+    Char123LocaleChar125JournalSlugRoute: Char123LocaleChar125JournalSlugRoute,
+    Char123LocaleChar125MetiersSlugRoute: Char123LocaleChar125MetiersSlugRoute,
+    Char123LocaleChar125CollectionsIndexRoute:
+      Char123LocaleChar125CollectionsIndexRoute,
+    Char123LocaleChar125JournalIndexRoute:
+      Char123LocaleChar125JournalIndexRoute,
+    Char123LocaleChar125MetiersIndexRoute:
+      Char123LocaleChar125MetiersIndexRoute,
+    Char123LocaleChar125CollectionsCategorySlugRoute:
+      Char123LocaleChar125CollectionsCategorySlugRoute,
+    Char123LocaleChar125CollectionsCategoryIndexRoute:
+      Char123LocaleChar125CollectionsCategoryIndexRoute,
+  }
 
-const JournalRouteWithChildren =
-  JournalRoute._addFileChildren(JournalRouteChildren)
-
-interface MetiersRouteChildren {
-  MetiersSlugRoute: typeof MetiersSlugRoute
-  MetiersIndexRoute: typeof MetiersIndexRoute
-}
-
-const MetiersRouteChildren: MetiersRouteChildren = {
-  MetiersSlugRoute: MetiersSlugRoute,
-  MetiersIndexRoute: MetiersIndexRoute,
-}
-
-const MetiersRouteWithChildren =
-  MetiersRoute._addFileChildren(MetiersRouteChildren)
+const Char123LocaleChar125RouteRouteWithChildren =
+  Char123LocaleChar125RouteRoute._addFileChildren(
+    Char123LocaleChar125RouteRouteChildren,
+  )
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AtelierRoute: AtelierRoute,
-  ContactRoute: ContactRoute,
-  JournalRoute: JournalRouteWithChildren,
-  MetiersRoute: MetiersRouteWithChildren,
-  ProfessionnelsRoute: ProfessionnelsRoute,
-  SavoirFaireRoute: SavoirFaireRoute,
-  CollectionsSlugRoute: CollectionsSlugRoute,
-  CollectionsIndexRoute: CollectionsIndexRoute,
+  Char123LocaleChar125RouteRoute: Char123LocaleChar125RouteRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiPublicChatRoute: ApiPublicChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

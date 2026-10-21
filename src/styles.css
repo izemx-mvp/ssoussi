@@ -7,6 +7,7 @@
 @theme inline {
   --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Amiri", "Noto Naskh Arabic", serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -19,6 +20,8 @@
   --color-safi: var(--safi-blue);
   --color-safi-deep: var(--safi-deep);
   --color-clay: var(--clay);
+  --color-clay-deep: var(--clay-deep);
+  --color-glaze: var(--glaze-green);
   --color-sand: var(--sand);
   --color-cream: var(--cream);
   --color-ink: var(--ink);
@@ -60,14 +63,16 @@
 }
 
 :root {
-  /* Brand palette — SSOUSSI */
-  --safi-blue: oklch(0.36 0.15 260);      /* #053C8F */
-  --safi-deep: oklch(0.28 0.12 260);
-  --clay: oklch(0.57 0.16 37);            /* #C74B28 */
-  --sand: oklch(0.948 0.017 74);          /* #F4ECE1 */
-  --cream: oklch(0.977 0.016 80);         /* #FDF7ED */
-  --ink: oklch(0.24 0.02 50);             /* #2A1E17 */
-  --ochre: oklch(0.64 0.1 62);            /* #BA7F47 */
+  /* Brand palette — SSOUSSI. Blue and terracotta sampled from the logo file. */
+  --safi-blue: #043e86; /* logo blue — headings, dark sections */
+  --safi-deep: #032d63;
+  --clay: #cb4f26; /* logo terracotta — accents, large type, decoration */
+  --clay-deep: #b4441f; /* same hue, darkened to pass WCAG AA behind/as small text (CTAs, eyebrows) */
+  --glaze-green: #2f6b5a; /* copper-green glaze — secondary accent, sparingly */
+  --sand: #f4ece1; /* main background */
+  --cream: #fdf7ed; /* cards, alternate sections */
+  --ink: #2a1e17; /* body text */
+  --ochre: #ba7f47; /* fine details, dividers */
 
   --radius: 0.75rem;
   --background: var(--sand);
@@ -76,24 +81,24 @@
   --card-foreground: var(--ink);
   --popover: var(--cream);
   --popover-foreground: var(--ink);
-  --primary: var(--clay);
+  --primary: var(--clay-deep);
   --primary-foreground: var(--cream);
   --secondary: var(--safi-blue);
   --secondary-foreground: var(--cream);
-  --muted: oklch(0.92 0.02 72);
-  --muted-foreground: oklch(0.45 0.03 50);
-  --accent: oklch(0.92 0.03 70);
+  --muted: color-mix(in oklab, var(--sand) 80%, var(--ochre) 20%);
+  --muted-foreground: color-mix(in oklab, var(--ink) 78%, var(--sand) 22%);
+  --accent: color-mix(in oklab, var(--sand) 85%, var(--ochre) 15%);
   --accent-foreground: var(--ink);
-  --destructive: oklch(0.55 0.2 27);
+  --destructive: #a8321e;
   --destructive-foreground: var(--cream);
-  --border: oklch(0.86 0.03 70);
-  --input: oklch(0.86 0.03 70);
-  --ring: var(--clay);
+  --border: color-mix(in oklab, var(--sand) 72%, var(--ochre) 28%);
+  --input: color-mix(in oklab, var(--sand) 65%, var(--ochre) 35%);
+  --ring: var(--clay-deep);
   --chart-1: var(--safi-blue);
   --chart-2: var(--clay);
   --chart-3: var(--ochre);
-  --chart-4: oklch(0.6 0.08 160);
-  --chart-5: oklch(0.7 0.1 80);
+  --chart-4: var(--glaze-green);
+  --chart-5: var(--ink);
   --sidebar: var(--cream);
   --sidebar-foreground: var(--ink);
   --sidebar-primary: var(--safi-blue);
@@ -101,10 +106,11 @@
   --sidebar-accent: var(--sand);
   --sidebar-accent-foreground: var(--ink);
   --sidebar-border: var(--border);
-  --sidebar-ring: var(--clay);
+  --sidebar-ring: var(--clay-deep);
 
   --shadow-soft: 0 20px 50px -25px color-mix(in oklab, var(--ink) 35%, transparent);
-  --shadow-lift: 0 30px 60px -28px color-mix(in oklab, var(--safi-blue) 45%, transparent);
+  --shadow-lift: 0 26px 50px -26px color-mix(in oklab, var(--clay) 45%, transparent);
+  --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 @layer base {
@@ -113,48 +119,105 @@
   }
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     color: var(--safi-blue);
     font-weight: 500;
-    letter-spacing: 0;
-    line-height: 1.05;
+    letter-spacing: -0.01em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+  h1 {
+    letter-spacing: -0.022em;
+  }
+  em {
+    font-style: italic;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--clay) 25%, transparent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--clay-deep);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .bg-safi :focus-visible,
+  .bg-safi-deep :focus-visible {
+    outline-color: var(--cream);
   }
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
+/* Organic masks — slightly irregular, like the rim of a glazed bowl. */
 @utility mask-organic {
-  border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+  border-radius: 46% 54% 50% 50% / 38% 40% 60% 62%;
 }
 @utility mask-organic-2 {
   border-radius: 58% 42% 48% 52% / 44% 56% 44% 56%;
 }
+@utility mask-bowl {
+  border-radius: 2.25rem 2.75rem 2.5rem 2rem / 2rem 2.5rem 2.75rem 2.25rem;
+}
 @utility mask-arch {
-  border-radius: 999px 999px 1.5rem 1.5rem;
+  border-radius: 999px 999px 1.75rem 1.5rem;
 }
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: 0.72rem;
-  letter-spacing: 0;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--clay);
+  color: var(--clay-deep);
   font-weight: 600;
 }
+@utility font-arabic {
+  font-family: var(--font-arabic);
+}
 @utility lift {
-  transition: transform 0.5s cubic-bezier(.2,.7,.2,1), box-shadow 0.5s;
+  transition:
+    transform 0.5s var(--ease-out-soft),
+    box-shadow 0.5s var(--ease-out-soft);
   &:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-lift);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &:hover {
+      transform: none;
+    }
+  }
+}
+@utility zoom-media {
+  transition: transform 0.9s var(--ease-out-soft);
+  .group:hover & {
+    transform: scale(1.04);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .group:hover & {
+      transform: none;
+    }
   }
 }
 @utility shadow-soft {
@@ -162,18 +225,195 @@
 }
 @utility container-page {
   width: 100%;
-  max-width: 80rem;
+  max-width: 82rem;
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-inline: 1rem;
+  @media (min-width: 640px) {
+    padding-inline: 1.5rem;
+  }
   @media (min-width: 768px) {
     padding-inline: 2.5rem;
   }
 }
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Very light clay / paper grain, pure SVG noise — no image request. */
+@utility grain {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .16 0 0 0 0 .12 0 0 0 0 .09 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+}
+
+/* Hand-drawn underline: an SVG stroke that draws itself on hover/focus. */
+@utility draw-underline {
+  position: relative;
+  & > .draw-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.35em;
+    width: 100%;
+    height: 0.5em;
+    overflow: visible;
+    pointer-events: none;
+  }
+  & > .draw-line path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.55s var(--ease-out-soft);
+  }
+  &:hover > .draw-line path,
+  &:focus-visible > .draw-line path,
+  &[data-status="active"] > .draw-line path {
+    stroke-dashoffset: 0;
+  }
+}
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 @utility animate-marquee {
-  animation: marquee 40s linear infinite;
+  animation: marquee 48s linear infinite;
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@utility animate-spin-slow {
+  animation: spin-slow 28s linear infinite;
+}
+
+/* First-visit loader: brush-stroke draw of the motif, then fade. Pure CSS so it
+   never blocks if JS is slow; hidden immediately for returning visitors. */
+@keyframes brush-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes loader-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--sand);
+  animation: loader-out 0.3s ease 0.9s forwards;
+}
+.site-loader path,
+.site-loader circle {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: brush-draw 0.8s var(--ease-out-soft) forwards;
+}
+.site-loader circle:nth-of-type(2) {
+  animation-delay: 0.08s;
+}
+.site-loader circle:nth-of-type(3) {
+  animation-delay: 0.16s;
+}
+.site-loader path {
+  animation-delay: 0.2s;
+}
+.draw-in path,
+.draw-in circle {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: brush-draw 1s var(--ease-out-soft) forwards;
+}
+html[data-visited] .site-loader {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-loader {
+    display: none;
+  }
+}
+
+/* Long-form article typography */
+@utility prose-ssoussi {
+  font-size: 1.075rem;
+  line-height: 1.8;
+  color: var(--ink);
+  & h2 {
+    font-size: 2.1rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    scroll-margin-top: 7rem;
+  }
+  & p {
+    margin-top: 1.1rem;
+  }
+  & blockquote {
+    margin: 2.5rem 0;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--ochre);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.7rem;
+    line-height: 1.3;
+    color: var(--safi-blue);
+  }
+}
+
+/* Chat markdown (src/chatbot/Markdown.tsx output) */
+@utility chat-md {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  & p + p {
+    margin-top: 0.6rem;
+  }
+  & ul {
+    list-style: disc;
+    padding-left: 1.1rem;
+    margin: 0.4rem 0;
+  }
+  & ol {
+    list-style: decimal;
+    padding-left: 1.1rem;
+    margin: 0.4rem 0;
+  }
+  & li + li {
+    margin-top: 0.2rem;
+  }
+  & strong {
+    font-weight: 600;
+    color: var(--safi-blue);
+  }
+  & a {
+    color: var(--clay-deep);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  & h1,
+  & h2,
+  & h3 {
+    font-size: 1.15rem;
+    margin: 0.6rem 0 0.2rem;
+  }
 }

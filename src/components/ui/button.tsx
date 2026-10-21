@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -16,10 +16,11 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        clay: "rounded-full bg-clay text-cream tracking-wide shadow-soft hover:bg-clay/90 hover:-translate-y-0.5 transition-all",
-        safi: "rounded-full bg-safi text-cream tracking-wide hover:bg-safi-deep transition-all",
-        line: "rounded-full border border-safi/30 text-safi hover:bg-safi hover:text-cream transition-all",
-        lineLight: "rounded-full border border-cream/40 text-cream hover:bg-cream hover:text-safi transition-all",
+        clay: "rounded-full bg-clay-deep text-cream font-semibold tracking-wide shadow-soft transition-all hover:-translate-y-0.5 hover:brightness-95 motion-reduce:hover:translate-y-0",
+        safi: "rounded-full bg-safi text-cream font-semibold tracking-wide transition-all hover:bg-safi-deep",
+        line: "rounded-full border border-safi/35 text-safi font-semibold transition-all hover:bg-safi hover:text-cream",
+        lineLight:
+          "rounded-full border border-cream/50 text-cream font-semibold transition-all hover:bg-cream hover:text-safi",
       },
       size: {
         default: "h-9 px-4 py-2",

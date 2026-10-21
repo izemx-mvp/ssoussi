@@ -1,5 +1,5 @@
 import { createOpenAI } from "@ai-sdk/openai";
-import { streamText, type ModelMessage } from "ai";
+import { streamText, type ModelMessage, type StopCondition, type ToolSet } from "ai";
 
 import {
   createLovableAiGatewayRunIdFetch,
@@ -12,6 +12,13 @@ export function createResponsesCall(
   config: { baseURL: string; apiKey: string; model: string },
   messages: ModelMessage[],
   instructions?: string,
+  options: {
+    tools?: ToolSet;
+    stopWhen?: StopCondition<ToolSet>;
+    /** Maps a stream error to the text sent to the client (default: AI SDK generic message). */
+    onError?: (error: unknown) => string;
+    sendReasoning?: boolean;
+  } = {},
 ) {
   const runIdFetch = createLovableAiGatewayRunIdFetch(getLovableAiGatewayRunId(request));
   const provider = createOpenAI({
@@ -26,6 +33,8 @@ export function createResponsesCall(
     // AI SDK 6 lacks `instructions`: rename this key to `system` there.
     ...(instructions ? { instructions } : {}),
     messages,
+    ...(options.tools ? { tools: options.tools } : {}),
+    ...(options.stopWhen ? { stopWhen: options.stopWhen } : {}),
     maxRetries: 0,
     abortSignal: request.signal,
     providerOptions: {
@@ -45,6 +54,12 @@ export function createResponsesCall(
   return {
     result,
     response: () =>
-      withLovableAiGatewayRunIdHeader(result.toUIMessageStreamResponse({ sendReasoning: true }), runIdFetch),
+      withLovableAiGatewayRunIdHeader(
+        result.toUIMessageStreamResponse({
+          sendReasoning: options.sendReasoning ?? true,
+          ...(options.onError ? { onError: options.onError } : {}),
+        }),
+        runIdFetch,
+      ),
   };
 }

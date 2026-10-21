@@ -11,4 +11,4 @@
 
 - Keep shared navigation, footer, quote dialog and enquiry notifications in the root layout so every public page has the same working controls.
 - Keep product, craft and editorial sample content in shared data modules so listings and detail pages use the same records.
-- The existing assistant is one in-memory session without saved history; keep gateway helpers server-only and use AI SDK UI-message streams with AI Elements.
+- The assistant is rule-based and runs entirely in the browser (`src/chatbot/`, no AI or API key); its history lives in sessionStorage for the current tab only.

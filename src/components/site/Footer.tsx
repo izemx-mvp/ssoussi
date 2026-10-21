@@ -10,7 +10,6 @@ export function Footer() {
         <div>
           <div className="inline-block rounded-3xl bg-cream p-4"><Logo className="h-24" /></div>
           <p className="mt-6 max-w-sm text-sm leading-relaxed">{site.mission}</p>
-          <p className="mt-4 font-display text-2xl text-cream">{site.tifinagh}</p>
         </div>
         <div>
           <h3 className="eyebrow text-ochre">Navigation</h3>

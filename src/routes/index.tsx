@@ -25,7 +25,7 @@ function Index() {
       <img src={hero} alt="Vase de céramique bleue de Safi" className="absolute inset-0 size-full object-cover object-[65%_50%]" fetchPriority="high" />
       <div className="absolute inset-0 bg-ink/35" />
       <div className="container-page relative flex min-h-[560px] flex-col justify-center py-20 md:h-full">
-        <FadeUp><p className="text-xs font-medium uppercase text-cream">ⴰⴼⵓⵙ · La main, à l’origine de tout</p><h1 className="mt-6 text-7xl text-cream md:text-8xl">SSOUSSI</h1><p className="mt-3 font-display text-4xl text-cream md:text-5xl">Artisanat marocain</p><p className="mt-6 max-w-md text-base leading-relaxed text-cream">Des mains qui transmettent. Des matières qui racontent. Des pièces qui traversent le temps.</p><Button variant="lineLight" size="xl" asChild className="mt-9"><Link to="/collections">Explorer les collections <ArrowRight /></Link></Button></FadeUp>
+        <FadeUp><p className="text-xs font-medium uppercase text-cream">La main, à l’origine de tout</p><h1 className="mt-6 text-7xl text-cream md:text-8xl">SSOUSSI</h1><p className="mt-3 font-display text-4xl text-cream md:text-5xl">Artisanat marocain</p><p className="mt-6 max-w-md text-base leading-relaxed text-cream">Des mains qui transmettent. Des matières qui racontent. Des pièces qui traversent le temps.</p><Button variant="lineLight" size="xl" asChild className="mt-9"><Link to="/collections">Explorer les collections <ArrowRight /></Link></Button></FadeUp>
         <div className="absolute bottom-7 left-5 flex items-center gap-3 text-xs text-cream md:left-10"><ArrowDown className="size-4" /> De Safi au reste du monde</div>
       </div>
     </section>

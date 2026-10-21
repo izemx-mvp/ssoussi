@@ -1,7 +1,6 @@
 // CONTENU EXEMPLE À REMPLACER
 export const site = {
   name: "SSOUSSI",
-  tifinagh: "ⴰⴼⵓⵙ",
   tagline: "Artisanat marocain",
   mission:
     "SSOUSSI réunit des maîtres artisans du Maroc pour faire voyager des pièces façonnées à la main, de Safi au reste du monde.",

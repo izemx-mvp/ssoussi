@@ -71,7 +71,7 @@ export function FloatingActions() {
       {open && (
         <div className="fixed bottom-24 right-5 z-40 flex h-[32rem] max-h-[75vh] w-[calc(100vw-2.5rem)] max-w-sm flex-col overflow-hidden rounded-3xl border border-border bg-cream shadow-soft">
           <div className="bg-safi px-5 py-4 text-cream">
-            <p className="font-display text-2xl leading-none">ⴰⴼⵓⵙ · Assistant</p>
+            <p className="font-display text-2xl leading-none">SSOUSSI · Assistant</p>
             <p className="mt-1 text-xs text-cream/70">Questions sur nos métiers, pièces et devis</p>
           </div>
           <div className="flex-1 space-y-3 overflow-y-auto p-4 text-sm">
